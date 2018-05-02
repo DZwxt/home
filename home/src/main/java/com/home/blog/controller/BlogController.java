@@ -32,7 +32,6 @@ public class BlogController {
 	 */
 	@GetMapping()
 	public String blog(){
-		System.out.println(123);
 		return "blog/index/main";
 	}
 	

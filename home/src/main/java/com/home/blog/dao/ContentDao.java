@@ -23,8 +23,26 @@ public interface ContentDao {
 	int count(Map<String, Object> param);
 	
 	/**
-	 * 
+	 * 查看文章具体内容
 	 * @return
 	 */
 	ContentDO get(Long cid);
+	
+	/**
+	 * 添加文章
+	 * @param contentDO
+	 */
+	void addContentDO(ContentDO contentDO);
+	
+	/**
+	 * 删除文章
+	 * @param cid
+	 */
+	void delContentDO(Long cid);
+	
+	/**
+	 * 更新文章内容
+	 * @param contentDO
+	 */
+	void updateContent(ContentDO contentDO);
 }
