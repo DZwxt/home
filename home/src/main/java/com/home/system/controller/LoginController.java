@@ -7,6 +7,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.home.common.util.MD5Utils;
@@ -37,6 +38,11 @@ public class LoginController {
 		} catch (AuthenticationException e) {
 			return R.error("用户名或密码错误");
 		}
+	}
+	
+	@RequestMapping("/index")
+	public String index(){
+		return "";
 	}
 	
 }
