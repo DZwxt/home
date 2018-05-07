@@ -27,6 +27,7 @@ public class UserRealm extends AuthorizingRealm {
 			PrincipalCollection principals) {
 		Long userId = ShiroUtils.getUserId();
 		MenuDao menuDao = ApplicationContextRegister.getBean(MenuDao.class);
+		
 		principals.getPrimaryPrincipal();
 		return null;
 	}

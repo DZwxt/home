@@ -42,7 +42,7 @@ public class LoginController {
 	
 	@RequestMapping("/index")
 	public String index(){
-		return "";
+		return "index_v1";
 	}
 	
 }

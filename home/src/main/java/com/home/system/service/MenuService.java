@@ -1,7 +1,8 @@
 package com.home.system.service;
 
-import java.awt.Menu;
-import java.util.List;
+import java.util.Set;
+
+import com.home.system.domain.MenuDO;
 
 public interface MenuService {
 	
@@ -10,5 +11,5 @@ public interface MenuService {
 	 * @param id
 	 * @return
 	 */
-	List<Menu> list(Long id);
+	Set<MenuDO> list(Long id);
 }
