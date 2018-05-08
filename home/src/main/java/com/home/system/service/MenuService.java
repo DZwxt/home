@@ -1,7 +1,9 @@
 package com.home.system.service;
 
+import java.util.List;
 import java.util.Set;
 
+import com.home.common.domain.Tree;
 import com.home.system.domain.MenuDO;
 
 public interface MenuService {
@@ -11,5 +13,12 @@ public interface MenuService {
 	 * @param id
 	 * @return
 	 */
-	Set<MenuDO> list(Long id);
+	List<Tree<MenuDO>> list(Long id);
+	
+	/**
+	 * 查询用户对应的权限
+	 * @param userId
+	 * @return
+	 */
+	Set<String> getPerms(Long userId);
 }

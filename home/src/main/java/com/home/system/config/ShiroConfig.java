@@ -26,50 +26,7 @@ import com.home.system.shiro.UserRealm;
 
 @Configuration
 public class ShiroConfig {
-//	
-//	@Bean
-//	EhCacheManager getEhCacheManager(){
-//		EhCacheManager ehCacheManager = new EhCacheManager();
-//		ehCacheManager.setCacheManagerConfigFile("classpath:config/ehcache.xml");
-//		return ehCacheManager;
-//	}
-//	
-//	@Bean
-//	UserRealm UserRealm(EhCacheManager cacheManager){
-//		UserRealm userRealm = new UserRealm();
-//		userRealm.setCacheManager(cacheManager);
-//		return userRealm;
-//	}
-	
-//	@Bean
-//	SessionDAO sessionDAO(){
-//		MemorySessionDAO memorySessionDAO = new MemorySessionDAO();
-//		return memorySessionDAO;
-//	}
-	
-//	@Bean
-//	SessionManager setSessionManager(){
-//		DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-//		Collection<SessionListener> listeners = new ArrayList<SessionListener>();
-//		listeners.add(new BDSessionListener());
-//		sessionManager.setSessionDAO(sessionDAO());
-//		sessionManager.setSessionListeners(listeners);
-//		return sessionManager;
-//	}
-//	
-	
-//	@Bean
-//	SecurityManager securityManager(UserRealm userRealm) {
-//		DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
-//		manager.setRealm(userRealm);
-//		manager.setCacheManager(getEhCacheManager());
-//		manager.setSessionManager(setSessionManager());
-//		System.out.println("aaa");
-//		return manager;
-//	}
 
-	
-	
 	@Bean
 	public EhCacheManager getEhCacheManager() {
 		EhCacheManager em = new EhCacheManager();
@@ -83,6 +40,7 @@ public class ShiroConfig {
 		userRealm.setCacheManager(cacheManager);
 		return userRealm;
 	}
+
 	@Bean
 	SessionDAO sessionDAO() {
 		MemorySessionDAO sessionDAO = new MemorySessionDAO();
@@ -109,7 +67,8 @@ public class ShiroConfig {
 	}
 
 	@Bean
-	ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
+	ShiroFilterFactoryBean shiroFilterFactoryBean(
+			SecurityManager securityManager) {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
 		shiroFilterFactoryBean.setLoginUrl("/login");
@@ -128,9 +87,10 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/", "anon");
 		filterChainDefinitionMap.put("/blog", "anon");
 		filterChainDefinitionMap.put("/blog/open/**", "anon");
-		filterChainDefinitionMap.put("/**", "authc");
+//		filterChainDefinitionMap.put("/**", "authc");
 
-		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+		shiroFilterFactoryBean
+				.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;
 	}
 

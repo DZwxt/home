@@ -2,6 +2,7 @@ package com.home.system.shiro;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -11,6 +12,7 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -19,6 +21,7 @@ import com.home.common.util.ShiroUtils;
 import com.home.system.dao.MenuDao;
 import com.home.system.dao.UserDao;
 import com.home.system.domain.UserDO;
+import com.home.system.service.MenuService;
 
 public class UserRealm extends AuthorizingRealm {
 
@@ -26,10 +29,11 @@ public class UserRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		Long userId = ShiroUtils.getUserId();
-		MenuDao menuDao = ApplicationContextRegister.getBean(MenuDao.class);
-		
-		principals.getPrimaryPrincipal();
-		return null;
+		MenuService menuService = ApplicationContextRegister.getBean(MenuService.class);
+		Set<String> perms = menuService.getPerms(userId);
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		info.setStringPermissions(perms);
+		return info;
 	}
 
 	@Override
@@ -52,7 +56,7 @@ public class UserRealm extends AuthorizingRealm {
 			throw new LockedAccountException("该帐号暂停使用");
 		}
 		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,
-				password, user.getName());
+				password, getName());
 		return info;
 	}
 }
