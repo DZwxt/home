@@ -51,7 +51,6 @@ function selectLoad() {
 }
 function load() {
 	selectLoad();
-	alert("aaa");
 	$('#exampleTable')
 		.bootstrapTable(
 			{
@@ -225,6 +224,7 @@ function remove(id) {
 }
 
 function addD(type,description) {
+	alert(1234);
 	layer.open({
 		type : 2,
 		title : '增加',
@@ -233,6 +233,7 @@ function addD(type,description) {
 		area : [ '800px', '520px' ],
 		content : prefix + '/add/'+type+'/'+description // iframe的url
 	});
+	
 }
 function batchRemove() {
 	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
