@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @MapperScan("com.home.*.dao")
 @SpringBootApplication
-public class BootdoApplication {
+public class HomeApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BootdoApplication.class, args);
+        SpringApplication.run(HomeApplication.class, args);
         System.out.println("ヾ(◍°∇°◍)ﾉﾞ    home启动成功      ヾ(◍°∇°◍)ﾉﾞ\n");
     }
 

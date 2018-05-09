@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.home.common.dao.DictDao">
+
+
+	<select id="list" resultType="com.home.common.domain.DictDO">
+		select
+		id,name,value,`type`,description,sort,parent_id,create_by,create_date,update_by,update_date,remarks,del_flag,del_flag
+		from sys_dict
+		<where>
+			<if test="id != null">id = #{id}</if>
+			<if test="name != null">name = #{name}</if>
+			<if test="value != null">value = #{value}</if>
+			<if test="type != null">type = #{type}</if>
+			<if test="description != null">description = #{description}</if>
+			<if test="sort != null">sort = #{sort}</if>
+			<if test="parent_id != null">parent_id = #{parent_id}</if>
+			<if test="create_by != null">create_by = #{create_by}</if>
+			<if test="create_date != null">create_date = #{create_date}</if>
+			<if test="update_by != null">update_by = #{update_by}</if>
+			<if test="update_date != null">update_date = #{update_date}</if>
+			<if test="remarks != null">remarks = #{remarks}</if>
+			<if test="del_flag != null">del_flag = #{del_flag}</if>
+			<if test="del_flag != null">del_flag = #{del_flag}</if>
+		</where>
+		limit #{offset},#{limit}
+
+
+	</select>
+
+	<select id="listType" resultType="com.home.common.domain.DictDO">
+		select distinct
+		`type`,description from sys_dict
+	</select>
+
+</mapper>

@@ -6,8 +6,6 @@ import com.home.system.domain.UserDO;
 public class BaseController {
 
 	public UserDO getUser(){
-		System.out.println(12345);
-		UserDO user = ShiroUtils.getUser();
 		return ShiroUtils.getUser();
 	}
 	

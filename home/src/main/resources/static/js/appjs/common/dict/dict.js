@@ -21,6 +21,7 @@ $(function() {
 	//		$(selector).chosen(config[selector]);
 	//	}
 	load();
+	
 });
 function selectLoad() {
 	var html = "";
@@ -50,6 +51,7 @@ function selectLoad() {
 }
 function load() {
 	selectLoad();
+	alert("aaa");
 	$('#exampleTable')
 		.bootstrapTable(
 			{

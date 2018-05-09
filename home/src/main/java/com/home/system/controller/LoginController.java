@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.home.blog.controller.BlogController;
 import com.home.common.controller.BaseController;
 import com.home.common.domain.FileDO;
 import com.home.common.domain.Tree;
@@ -36,6 +37,12 @@ public class LoginController extends BaseController{
 	
 	@Autowired
 	private MenuService menuService;
+	
+	@RequestMapping("/")
+	public String blog(){
+		return "redirect:/blog";
+	}
+	
 	
 	@GetMapping("/login")
 	public String login(){
@@ -79,6 +86,11 @@ public class LoginController extends BaseController{
 		}
 		model.addAttribute("name", getUser().getName());
 		return "index_v1";
+	}
+	
+	@GetMapping("/main")
+	String main(){
+		return "main";
 	}
 	
 }
