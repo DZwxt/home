@@ -76,10 +76,14 @@ public class DictController {
 	
 	// 类别已经指定增加
 	@GetMapping("/add/{type}/{description}")
-	@RequiresPermissions("common:sysDict:add")
 	String addD(Model model, @PathVariable("type") String type, @PathVariable("description") String description) {
 		model.addAttribute("type", type);
 		model.addAttribute("description", description);
 		return "common/sysDict/add";
-	}		
+	}	
+	
+	@GetMapping("/add")
+	String add(){
+		return prefix + "add";
+	}
 }

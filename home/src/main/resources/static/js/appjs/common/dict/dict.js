@@ -1,27 +1,7 @@
 
 var prefix = "/common/sysDict"
 $(function() {
-	
-	//	var config = {
-	//		'.chosen-select' : {},
-	//		'.chosen-select-deselect' : {
-	//			allow_single_deselect : true
-	//		},
-	//		'.chosen-select-no-single' : {
-	//			disable_search_threshold : 10
-	//		},
-	//		'.chosen-select-no-results' : {
-	//			no_results_text : '没有数据'
-	//		},
-	//		'.chosen-select-width' : {
-	//			width : "95%"
-	//		}
-	//	}
-	//	for (var selector in config) {
-	//		$(selector).chosen(config[selector]);
-	//	}
 	load();
-	
 });
 function selectLoad() {
 	var html = "";
@@ -224,7 +204,6 @@ function remove(id) {
 }
 
 function addD(type,description) {
-	alert(1234);
 	layer.open({
 		type : 2,
 		title : '增加',
