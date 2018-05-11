@@ -47,4 +47,6 @@ public interface DictService {
 	 * @return
 	 */
 	R delete(Long id);
+	
+	R deleteBatch(Long[] ids);
 }

@@ -18,7 +18,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 
 import com.home.common.config.ApplicationContextRegister;
 import com.home.common.util.ShiroUtils;
-import com.home.system.dao.MenuDao;
 import com.home.system.dao.UserDao;
 import com.home.system.domain.UserDO;
 import com.home.system.service.MenuService;

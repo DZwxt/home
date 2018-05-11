@@ -171,6 +171,17 @@ function add() {
 		content : prefix + '/add' // iframe的url
 	});
 }
+function addD(type,description) {
+	layer.open({
+		type : 2,
+		title : '增加',
+		maxmin : true,
+		shadeClose : false, // 点击遮罩关闭层
+		area : [ '800px', '520px' ],
+		content : prefix + '/add/'+type+'/'+description // iframe的url
+	});
+	
+}
 function edit(id) {
 	layer.open({
 		type : 2,
@@ -203,17 +214,7 @@ function remove(id) {
 	})
 }
 
-function addD(type,description) {
-	layer.open({
-		type : 2,
-		title : '增加',
-		maxmin : true,
-		shadeClose : false, // 点击遮罩关闭层
-		area : [ '800px', '520px' ],
-		content : prefix + '/add/'+type+'/'+description // iframe的url
-	});
-	
-}
+
 function batchRemove() {
 	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
 	if (rows.length == 0) {

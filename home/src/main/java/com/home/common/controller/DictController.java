@@ -86,4 +86,11 @@ public class DictController {
 	String add(){
 		return prefix + "add";
 	}
+	
+	@PostMapping("batchRemove")
+	@ResponseBody
+	R deleteBatch(@RequestParam("ids[]") Long[] ids){
+		R deleteBatch = dictService.deleteBatch(ids);
+		return deleteBatch;
+	}
 }

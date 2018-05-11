@@ -91,4 +91,13 @@
 	<delete id="delete">
 		delete from sys_dict where id=#{id}
 	</delete>
+	
+	<delete id="deleteBatch">
+		delete from sys_dict where id in 
+		<foreach collection="array" open="(" separator="," close=")" item="id">
+			#{id}
+		</foreach>
+	</delete>
+	
+	
 </mapper>

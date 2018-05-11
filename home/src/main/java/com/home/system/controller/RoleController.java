@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/sys")
+@RequestMapping("/sys/role")
 public class RoleController {
 
 	
-	@GetMapping("/role")
+	@GetMapping("")
 	String role(){
 		return "system/role/role";
 	}
+	
+	
 	
 	
 }

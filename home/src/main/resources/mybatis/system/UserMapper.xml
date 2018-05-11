@@ -2,34 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.home.system.dao.UserDao">
-	
+
 
 	<select id="list" resultType="com.home.system.domain.UserDO">
-		select
+			select
 		`user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district`
 		from sys_user
 		<where>
-			<if test="user_id != null and user_id != ''">and user_id=#{user_id}</if>
+			<if test="userId != null and userId != ''">and user_id=#{userId}</if>
 			<if test="username != null and username != ''">and username=#{username}</if>
 			<if test="name != null and name != ''">and name=#{name}</if>
-			<if test="dept_id != null and dept_id != ''">and dept_id=#{dept_id}</if>
+			<if test="deptId != null and deptId != ''">and dept_id=#{deptId}</if>
 			<if test="password != null and password != ''">and password=#{password}</if>
 			<if test="email != null and email != ''">and email=#{email}</if>
 			<if test="mobile != null and mobile != ''">and mobile=#{mobile}</if>
 			<if test="status != null and status != ''">and status=#{status}</if>
-			<if test="user_id_create != null and user_id_create != ''">and user_id_create=#{user_id_create}</if>
-			<if test="gmt_create != null and gmt_create != ''">and gmt_create=#{gmt_create}</if>
-			<if test="gmt_modified != null and gmt_modified != ''">and gmt_modified=#{gmt_modified}</if>
+			<if test="userIdCreate != null and userIdCreate != ''">and user_id_create=#{userIdCreate}</if>
+			<if test="gmtCreate != null and gmtCreate != ''">and gmt_create=#{gmtCreate}</if>
+			<if test="gmtModified != null and gmtModified != ''">and gmt_modified=#{gmtModified}</if>
 			<if test="sex != null and sex != ''">and sex=#{sex}</if>
 			<if test="birth != null and birth != ''">and birth=#{birth}</if>
-			<if test="pic_id != null and pic_id != ''">and pic_id=#{pic_id}</if>
-			<if test="live_address != null and live_address != ''">and live_address=#{live_address}</if>
+			<if test="picId != null and picId != ''">and pic_id=#{picId}</if>
+			<if test="liveAddress != null and liveAddress != ''">and live_address=#{liveAddress}</if>
 			<if test="hobby != null and hobby != ''">and hobby=#{hobby}</if>
 			<if test="province != null and province != ''">and province=#{province}</if>
 			<if test="city != null and city != ''">and city=#{city}</if>
 			<if test="district != null and district != ''">and district=#{district}</if>
 		</where>
+		<choose>
+			<when test="sort!=null and sort.trim() != null">
+				order by #{sort} #{order} 
+			</when>
+			<otherwise>
+				order by user_id desc
+			</otherwise>
+		</choose>
+		<if test="limit != null and offset != null">
+			limit #{offset},#{limit}
+		</if>
 	</select>
+	
+	<select id="count" resultType="int">
+		select count(user_id) from sys_user
+	</select>
+
 
 
 </mapper>

@@ -59,4 +59,14 @@ public class DictServiceImpl implements DictService{
 		}
 	}
 
+	@Override
+	public R deleteBatch(Long[] ids) {
+		int deleteBatch = dictDao.deleteBatch(ids);
+		if (deleteBatch>0) {
+			return R.error(0, "删除成功");
+		}else {
+			return R.error("删除失败");
+		}
+	}
+
 }

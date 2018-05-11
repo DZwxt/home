@@ -49,4 +49,6 @@ public interface DictDao {
 	 * @return
 	 */
 	int delete(Long id);
+	
+	int deleteBatch(Long[] ids);
 }
